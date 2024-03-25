@@ -1,5 +1,5 @@
 # 指定基础的go编译镜像
-FROM golang:alpine as build
+FROM golang:1.21.8
 
 # 指定go的环境变量
 ENV GOPROXY=https://goproxy.cn \
@@ -9,7 +9,7 @@ ENV GOPROXY=https://goproxy.cn \
     GOARCH=amd64
 
 # 指定工作空间目录，会自动cd到这个目录
-WORKDIR /home/fusheng/build
+WORKDIR /app
 
 # 把项目的依赖配置文件拷贝到容器中，并下载依赖
 COPY go.mod .
@@ -29,4 +29,4 @@ FROM scratch as deploy
 COPY --from=build /build/app /
 COPY --from=build /build/conf ./conf
 
-CMD ["/app"]
+CMD ["./app"]
