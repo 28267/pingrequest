@@ -9,7 +9,7 @@ ENV GOPROXY=https://goproxy.cn \
     GOARCH=amd64
 
 # 指定工作空间目录，会自动cd到这个目录
-WORKDIR /build
+WORKDIR /home/fusheng/build
 
 # 把项目的依赖配置文件拷贝到容器中，并下载依赖
 COPY go.mod .
