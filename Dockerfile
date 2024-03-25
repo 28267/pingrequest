@@ -13,7 +13,7 @@ WORKDIR /build
 
 # 把项目的依赖配置文件拷贝到容器中，并下载依赖
 COPY go.mod .
-COPY go.sum .
+# COPY go.sum .
 RUN go mod download
  
 # 把项目的其他所有文件拷贝到容器中
